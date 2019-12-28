@@ -8,6 +8,7 @@
     "build": "parcel build index.html"
   },
   "dependencies": {
+    "guify": "^0.12.0",
     "react-app-polyfill": "^1.0.0"
   },
   "alias": {

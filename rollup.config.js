@@ -3,7 +3,6 @@ import resolve from 'rollup-plugin-node-resolve'
 import commonjs from 'rollup-plugin-commonjs'
 import sourceMaps from 'rollup-plugin-sourcemaps'
 import { terser } from 'rollup-plugin-terser'
-import fs from 'fs-extra'
 
 import pkg from './package.json'
 
@@ -54,19 +53,6 @@ const config = {
     commonjs(),
     sourceMaps(),
   ],
-}
-
-function writeCjsEntryFile(name) {
-  const baseLine = `module.exports = require('./${name}`
-  const contents = `
-'use strict'
-if (process.env.NODE_ENV === 'production') {
-  ${baseLine}.cjs.production.min.js')
-} else {
-  ${baseLine}.cjs.development.js')
-}
-`
-  return fs.writeFile('./dist/index.js', contents)
 }
 
 export default config

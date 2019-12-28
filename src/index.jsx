@@ -9,26 +9,31 @@ import React, {
 import guify from 'guify'
 
 const GuiContext = React.createContext({
-  state: {},
-  setState: () => {},
+  data: {},
+  setData: () => {},
   gui: null,
 })
 
 const FolderContext = React.createContext(null)
 
-export default React.forwardRef(
-  ({ children, state, setState, ...props }, guiRef) => {
+export const GuiPanel = React.forwardRef(
+  ({ children, data, setData, barMode, open, ...props }, guiRef) => {
     const [gui, setGui] = useState(null)
     const ref = useRef()
 
     useEffect(() => {
       if (!!gui) return
-      const _gui = new guify({ ...props, root: ref.current })
+      const _gui = new guify({
+        root: ref.current,
+        barMode,
+        open: barMode === 'above' || open,
+        ...props,
+      })
       guiRef.current = _gui
       setGui(_gui)
     }, [props, gui, guiRef])
 
-    const context = { gui, state, setState }
+    const context = { gui, data, setData }
 
     return (
       <div ref={ref}>
@@ -40,24 +45,24 @@ export default React.forwardRef(
   }
 )
 
-const useGui = ({ path, label, onChange, ...props }) => {
-  const { gui, state, setState } = useContext(GuiContext)
+const useGui = ({ property, label, onChange, ...props }) => {
+  const { gui, data, setData } = useContext(GuiContext)
   const folder = useContext(FolderContext)
 
   const _onChange = useCallback(
     value => {
       onChange && onChange(value)
-      setState(s => ({ ...s, [path]: value }))
+      setData(s => ({ ...s, [property]: value }))
     },
-    [path, setState, onChange]
+    [property, setData, onChange]
   )
 
   const [el] = useState(() =>
     gui.Register({
       ...props,
-      label: label || path.charAt(0).toUpperCase() + path.slice(1),
-      object: state,
-      property: path,
+      label: label || property.charAt(0).toUpperCase() + property.slice(1),
+      object: data,
+      property,
       onChange: _onChange,
       folder,
     })

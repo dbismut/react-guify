@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import GUI, {
+import {
+  GuiPanel,
   GuiButton,
   GuiCheckbox,
   GuiRange,
@@ -15,12 +16,12 @@ import GUI, {
 } from '../src'
 
 const initialState = {
-  limits: true,
+  checked: true,
   bounds: 34,
   color: 'red',
-  select2: 'movement',
+  movement: 'movement',
   interval: [30, 50],
-  text2: 'string',
+  name: 'David',
   file: null,
 }
 
@@ -31,39 +32,37 @@ function App() {
   const gui = React.useRef()
   return (
     <div className="App">
-      <GUI
+      <GuiPanel
         ref={gui}
-        state={state}
-        setState={setState}
-        open={true}
-        theme="dark"
-        align="right"
+        data={state}
+        setData={setState}
         barMode="above"
-        width={300}
+        align="right"
+        theme="light"
       >
         <GuiButton
-          label="yo"
+          label="Toast"
           action={() => {
-            gui.current.Toast('hello')
+            gui.current.Toast('Current date: ' + Date.now())
           }}
         />
-        <GuiText path="text2" />
-        <GuiTitle label="title3" />
-        <GuiFile label="FILE" path="file" />
-        <GuiDisplay label="display" path="text2" />
-        <GuiCheckbox label="limits" path="limits" />
-        <GuiColor path="color" />
+        <GuiText property="name" />
+        <GuiTitle label="Options" />
+        <GuiFile label="Select File" property="file" />
+        <GuiDisplay property="name" />
+        <GuiCheckbox property="checked" />
+        <GuiColor property="color" />
         <GuiFolder label="Bounds Folder" open={true}>
           <GuiRange
             label="bounds"
-            path="bounds"
+            property="bounds"
             scale="log"
-            onChange={hex => console.log({ hex })}
+            onChange={value => console.log({ value })}
           />
-          <GuiSelect path="select2" options={options} />
-          <GuiInterval path="interval" min={5} max={70} />
+          <GuiSelect property="movement" options={options} />
+          <GuiInterval property="interval" min={5} max={70} />
         </GuiFolder>
-      </GUI>
+      </GuiPanel>
       <p>{JSON.stringify(state)}</p>
     </div>
   )
