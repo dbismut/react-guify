@@ -13,7 +13,7 @@ import {
   GuiTitle,
   GuiDisplay,
   GuiFile,
-} from '../src'
+} from 'react-guify'
 
 const initialState = {
   checked: true,

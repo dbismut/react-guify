@@ -1,16 +1,14 @@
 {
-  "version": "0.1.1",
+  "version": "0.1.2",
   "license": "MIT",
-  "main": "dist/index.js",
-  "files": [
-    "dist"
-  ],
+  "name": "react-guify",
+  "source": "src/index.jsx",
+  "main": "dist/react-guify.js",
+  "module": "dist/react-guify.modern.mjs",
+  "unpkg": "dist/reac-guify.umd.js",
   "scripts": {
-    "build": "rollup -c && node ./writeEntryFile.js"
-  },
-  "peerDependencies": {
-    "guify": "^0.12.0",
-    "react": ">=16"
+    "build": "microbundle -f modern,umd",
+    "start": "microbundle watch"
   },
   "prettier": {
     "printWidth": 80,
@@ -18,24 +16,17 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "react-guify",
+  "peerDependencies": {
+    "guify": "^0.12.0",
+    "react": ">=16"
+  },
   "author": "David Bismut",
-  "module": "dist/react-guify.esm.js",
   "devDependencies": {
     "@babel/core": "^7.7.7",
-    "@babel/preset-env": "^7.7.7",
     "@babel/preset-react": "^7.7.4",
-    "fs-extra": "^8.1.0",
+    "guify": "^0.12.0",
+    "microbundle": "^0.12.0-next.6",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "rollup": "^1.27.14",
-    "rollup-plugin-babel": "^4.3.3",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-sourcemaps": "^0.4.2",
-    "rollup-plugin-terser": "^5.1.3"
-  },
-  "dependencies": {
-    "guify": "^0.12.0"
+    "react-dom": "^16.12.0"
   }
 }
