@@ -4,6 +4,8 @@
 
 React-guify is a thin wrapper around the [simple GUI library guify](https://github.com/colejd/guify).
 
+![image](https://raw.githubusercontent.com/colejd/guify/master/docs/Guify.png)
+
 [Demo](https://codesandbox.io/s/react-guify-154rk)
 
 ### Installation
