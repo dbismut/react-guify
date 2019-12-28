@@ -1,13 +1,12 @@
 {
-  "version": "0.1.2",
+  "version": "0.1.4",
   "license": "MIT",
   "name": "react-guify",
   "source": "src/index.jsx",
-  "main": "dist/react-guify.js",
-  "module": "dist/react-guify.modern.mjs",
-  "unpkg": "dist/reac-guify.umd.js",
+  "main": "dist/react-guify.umd.js",
+  "module": "dist/react-guify.modern.js",
   "scripts": {
-    "build": "microbundle -f modern,umd",
+    "build": "microbundle --format modern,umd --jsx React.createElement",
     "start": "microbundle watch"
   },
   "prettier": {

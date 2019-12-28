@@ -4174,13 +4174,6 @@ react-dom@^16.12.0:
     prop-types "^15.6.2"
     scheduler "^0.18.0"
 
-react-guify@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/react-guify/-/react-guify-0.1.1.tgz#0379bd9cd350592ff09636ec4432bdc02b13dfed"
-  integrity sha512-AcmMFaasH6UKJidpJAxWNHJtw2coBcRSgWKKjn2DvFP9oYHjl2UrtgQnWwfaRoYTwGXY850k1lE4R1CoLkb44Q==
-  dependencies:
-    guify "^0.12.0"
-
 react-is@^16.8.1:
   version "16.12.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.12.0.tgz#2cc0fe0fba742d97fd527c42a13bec4eeb06241c"
